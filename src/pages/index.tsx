@@ -1,20 +1,22 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-
+// import styles from '../styles/email.scss'
+import {EmailTemplate} from '../components/_email-template-form'
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
+    <div >
+      {/* <Head>
         <title>FE updates</title>
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Five for fighting
-        </h1>
-      </main>
+    
+      </main> */}
+      <EmailTemplate/> 
     </div>
+  
+   
   )
 }
 
