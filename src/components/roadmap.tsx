@@ -9,17 +9,17 @@ type RoadmapType = {
 };
 
 type WeekType = {
-  from: string;
-  to: string;
+  start: string;
+  end: string;
 };
 
 type AchievementType = {
-  week: string | number;
+  week: number | undefined;
   description: string;
 };
 
 type ChallengeType = {
-  week: string | number;
+  week: number | undefined;
   description: string;
 };
 
@@ -33,12 +33,12 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
   const [deliverables, setDeliverables] = useState<Array<DeliverableType>>([]);
   const [is_modal_visible, setIsModalVisible] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
-  const [active_week, setActiveWeek] = useState<string | number>('');
+  const [active_week, setActiveWeek] = useState<number | undefined>();
   const [current_achievement, setCurrentAchievement] = useState<string>('');
   const [current_challenge, setCurrentChallenge] = useState<string>('');
   const [current_deliverable, setCurrentDeliverable] = useState<string>('');
 
-  const openModal = (title, week: string | number = '0') => {
+  const openModal = (title, week = 0) => {
     setIsModalVisible(true);
     setTitle(title);
     setActiveWeek(week);
@@ -96,7 +96,7 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
         onClose={() => setIsModalVisible(false)}
         is_visible={is_modal_visible}
       >
-        {active_week === '0' ? (
+        {active_week === 0 ? (
           <Accordion title="Deliverables">
             <ul>{getDeliverables()}</ul>
             <textarea
@@ -142,9 +142,9 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
             className={`${styles.week} ${styles[`week${index + 1}`]}`}
           >
             <Indicator
-              title={`Week ${index + 1} (${week.from} - ${week.to})`}
+              title={`Week ${index + 1} (${week.start} - ${week.end})`}
               onClick={() => {
-                const title = `Week ${index + 1} (${week.from} - ${week.to})`;
+                const title = `Week ${index + 1} (${week.start} - ${week.end})`;
                 openModal(title, index + 1);
               }}
             />
