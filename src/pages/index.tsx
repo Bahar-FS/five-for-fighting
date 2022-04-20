@@ -1,5 +1,7 @@
 import type { NextPage } from 'next'
+import React, { useState } from "react";
 import Head from 'next/head'
+import MonthPicker from '../components/month-picker'
 import styles from '../styles/Home.module.scss'
 
 const Home: NextPage = () => {
@@ -13,6 +15,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Five for fighting
         </h1>
+        <MonthPicker />
       </main>
     </div>
   )
