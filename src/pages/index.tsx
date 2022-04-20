@@ -1,5 +1,7 @@
 import type { NextPage } from 'next';
+import React, { useState } from 'react';
 import Head from 'next/head';
+import MonthPicker from '../components/month-picker';
 import Roadmap from '../components/roadmap';
 import styles from '../styles/Home.module.scss';
 
@@ -18,6 +20,7 @@ const Home: NextPage = () => {
         <title>Template Generator</title>
       </Head>
       <main className={styles.main}>
+        <MonthPicker />
         <Roadmap weeks={weeks} />
       </main>
     </div>
