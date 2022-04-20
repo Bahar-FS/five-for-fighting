@@ -108,6 +108,122 @@
   margin-left: 0.5rem;
 }
 
+.week {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+
+  textarea {
+    width: 20rem;
+    height: 10rem;
+
+    &.achievement {
+      background-color: #9fc936;
+    }
+
+    &.challenge {
+      background-color: #ea6154;
+    }
+  }
+}
+
+.week1 {
+  top: 5%;
+  left: 78%;
+}
+
+.week2 {
+  top: 8%;
+  left: 38%;
+}
+
+.week3 {
+  top: 38%;
+  left: 52%;
+}
+
+.week4 {
+  top: 68%;
+  left: 62%;
+}
+
+.deliverable {
+  top: 70%;
+  left: 20%;
+
+  textarea {
+    background-color: #2d73ab;
+  }
+}
+
+.indicator {
+  background: url('../images/indicator.png') no-repeat;
+  background-size: 100%;
+  width: 40px;
+  height: 40px;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.arrow {
+  float: right;
+}
+
+.modal-body {
+  padding-top: 10px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+}
+
+.modal {
+  background: white;
+  width: 80%;
+  height: 80%;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.accordion {
+  width: 100%;
+  margin-bottom: 15px;
+  line-height: 15px;
+  border: 1px solid rgba(209, 213, 219, 0.5);
+  margin-bottom: 1rem;
+}
+
+.accordion-btn {
+  width: 100%;
+  position: relative;
+  text-align: left;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  background-color: gray;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
