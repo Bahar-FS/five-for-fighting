@@ -8,11 +8,7 @@ type IndicatorType = {
 const Indicator: React.FC<IndicatorType> = ({ title, onClick }) => {
   return (
     <>
-      <button
-        type="button"
-        className={styles.indicator}
-        onClick={onClick}
-      ></button>
+      <button type="button" className={styles.indicator} onClick={onClick} />
       <div>{title}</div>
     </>
   );

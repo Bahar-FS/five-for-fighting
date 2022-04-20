@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Accordion from '../components/accordion';
-import Modal from '../components/modal';
-import Indicator from '../components/indicator';
 import styles from '../styles/Home.module.scss';
+import Accordion from './accordion';
+import Modal from './modal';
+import Indicator from './indicator';
 
 type RoadmapType = {
   weeks: Array<WeekType>;

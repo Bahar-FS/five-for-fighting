@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Picker from 'react-month-picker';
-import Roadmap from '../components/roadmap';
+import Roadmap from './roadmap';
 import 'react-month-picker/css/month-picker.css';
 
 const MonthPicker = () => {
@@ -47,7 +47,6 @@ const MonthPicker = () => {
     const firstDate = new Date(year, month - 1, 1);
     const lastDate = new Date(year, month, 0);
     const numDays = lastDate.getDate();
-    console.log(numDays);
 
     let offset = 0;
 
