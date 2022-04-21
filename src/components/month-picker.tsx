@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useRef, useState } from 'react';
 import Picker from 'react-month-picker';
 import Roadmap from './roadmap';
 import Indicator from './indicator';
@@ -96,6 +96,8 @@ const MonthPicker = () => {
         : 0;
     return month && year ? `${month}-${year}` : 'Select Month';
   };
+
+  const ref = useRef<HTMLDivElement>(null);
 const imageChange =(indicator) => {
   setIndicator(indicator);
 };

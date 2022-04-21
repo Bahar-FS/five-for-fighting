@@ -110,6 +110,9 @@
   display: flex;
   flex-direction: column;
   width: 25rem;
+  padding: 1rem;
+  background-color: lightgrey;
+  font-size: 12px;
 
   textarea {
     width: 20rem;
@@ -126,23 +129,31 @@
 }
 
 .week1 {
-  top: 5%;
-  left: 78%;
+  top: 18%;
+  left: 75%;
 }
 
 .week2 {
-  top: 8%;
-  left: 38%;
+  top: 38%;
+  left: 70%;
 }
 
 .week3 {
-  top: 28%;
-  left: 30%;
+  top: 22%;
+  left: 20%;
+
+  button {
+    align-self: flex-end;
+  }
 }
 
 .week4 {
   top: 45%;
-  left: 58%;
+  left: 20%;
+
+  button {
+    align-self: flex-end;
+  }
 }
 
 .week5 {
@@ -152,7 +163,11 @@
 
 .deliverable {
   top: 70%;
-  left: 20%;
+  left: 8%;
+
+  button {
+    align-self: flex-end;
+  }
 
   textarea {
     background-color: #2d73ab;
@@ -162,8 +177,8 @@
 .indicator {
   background: url('../images/indicator.png') no-repeat;
   background-size: 100%;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   border: none;
 
   &:hover {
@@ -198,7 +213,8 @@
 .modal-header {
   display: flex;
   justify-content: space-between;
-  font-size: 25px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .modal {
@@ -239,7 +255,8 @@
   background: transparent;
   outline: none;
   cursor: pointer;
-  background-color: gray;
+  background-color: #000;
+  color: #fff;
 }
 
 @media (max-width: 600px) {
@@ -258,4 +275,33 @@
     opacity: 0.3;
 
   }
+}
+.roadmap {
+  background: #fff url(../images/background.png) no-repeat center;
+  background-size: contain;
+  width: 100vw;
+  height: 80vh;
+}
+
+.export-btn {
+  background-color: red;
+  border: none;
+  color: #fff;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.achievement-label {
+  color: green;
+  font-weight: bold;
+}
+
+.challenge-label {
+  color: lightcoral;
+  font-weight: bold;
+}
+
+.indicator-title {
+  font-weight: bold;
 }
