@@ -169,7 +169,23 @@
   &:hover {
     cursor: pointer;
   }
+
+  &.indicator-map {
+    background: url('../../public/google-maps.png') no-repeat;
+    background-size: 100%;
+  }
+
+  &.indicator-red {
+    background: url('../images/indicator.png') no-repeat;
+    background-size: 100%;
+  }
+
+  &.indicator-black {
+    background: url('../../public/maps-and-flags.png') no-repeat;
+    background-size: 100%;
+  }
 }
+
 
 .arrow {
   float: right;
@@ -230,5 +246,16 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+.box{
+  background: antiquewhite;
+  width: 230px;
+  height: 200px;
+  padding: 10px;
+  margin-top: 10px;
+  .image_indicator:hover{
+    opacity: 0.3;
+
   }
 }

@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import Picker from 'react-month-picker';
 import Roadmap from './roadmap';
+import Indicator from './indicator';
 import 'react-month-picker/css/month-picker.css';
+import styles from '../styles/Home.module.scss';
+import Image from 'next/image';
+import indicator1 from '../../public/google-maps.png';
+import indicator2 from '../../public/indicator.png';
+import indicator3 from '../../public/maps-and-flags.png';
+import { doc } from 'prettier';
 
 const MonthPicker = () => {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
   const [weeks, setWeeks] = useState([]);
-
   const [isVisible, setVisibility] = useState(false);
   const [selected_month_year, setMonthYear] = useState({
     month: currentMonth,
@@ -70,6 +76,9 @@ const MonthPicker = () => {
     setWeeks(weeks);
   };
 
+
+  const [indicator, setIndicator] = useState('');
+
   const handleOnChange = (year, month) => {
     setMonthYear({ year, month });
     setVisibility(false);
@@ -87,7 +96,9 @@ const MonthPicker = () => {
         : 0;
     return month && year ? `${month}-${year}` : 'Select Month';
   };
-
+const imageChange =(indicator) => {
+  setIndicator(indicator);
+};
   return (
     <div className="MonthYearPicker">
       <div>Please select the month:</div>
@@ -100,8 +111,20 @@ const MonthPicker = () => {
         onChange={handleOnChange}
         onDismiss={handleOnDismiss}
       />
+      <div className={styles.box}>  
+        <span><h4>Choose the color indicator</h4></span>
+        <div >
+          <Image src={indicator1} alt="indicator1" id="indicator1" width={50} height={50} className='indicator1' onClick={() => imageChange('indicator-map')} />
+          {/* <Indicator
+            title=""
+            onClick={imageChange}
+            imagebg={styles.indicator}/> */}
+          <Image src={indicator2} alt="indicator2" id="indicator2" width={50} height={50} className='indicator2' onClick={() => imageChange('indicator-red')} />
+          <Image src={indicator3} alt="indicator3" id="indicator2"  width={50} height={50} className={styles.image_indicator} onClick={() =>imageChange('indicator-black')}  />
+        </div>
+      </div>
 
-      <Roadmap weeks={weeks} />
+      <Roadmap weeks={weeks} indicator={indicator} />
     </div>
   );
 };
