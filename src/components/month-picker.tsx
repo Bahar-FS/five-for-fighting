@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useRef, useState } from 'react';
 import Picker from 'react-month-picker';
 import Roadmap from './roadmap';
 import 'react-month-picker/css/month-picker.css';
@@ -88,19 +88,22 @@ const MonthPicker = () => {
     return month && year ? `${month}-${year}` : 'Select Month';
   };
 
-  return (
-    <div className="MonthYearPicker">
-      <div>Please select the month:</div>
-      <button onClick={showMonthPicker}>{getMonthValue()}</button>
-      <Picker
-        show={isVisible}
-        lang={monthsList}
-        years={range}
-        value={selected_month_year}
-        onChange={handleOnChange}
-        onDismiss={handleOnDismiss}
-      />
+  const ref = useRef<HTMLDivElement>(null);
 
+  return (
+    <div>
+      <div className="MonthYearPicker">
+        <div>Month</div>
+        <button onClick={showMonthPicker}>{getMonthValue()}</button>
+        <Picker
+          show={isVisible}
+          lang={monthsList}
+          years={range}
+          value={selected_month_year}
+          onChange={handleOnChange}
+          onDismiss={handleOnDismiss}
+        />
+      </div>
       <Roadmap weeks={weeks} />
     </div>
   );
