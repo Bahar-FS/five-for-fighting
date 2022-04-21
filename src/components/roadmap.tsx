@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from '../styles/Home.module.scss';
 import Accordion from './accordion';
 import Modal from './modal';
@@ -47,8 +47,8 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
   const createAchievement = (e) => {
     if (e.keyCode === 13) {
       setAchievements([
-        { week: active_week, description: e.target.value },
         ...achievements,
+        { week: active_week, description: e.target.value },
       ]);
       setCurrentAchievement('');
     }
@@ -57,8 +57,8 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
   const createChallenge = (e) => {
     if (e.keyCode === 13) {
       setChallenges([
-        { week: active_week, description: e.target.value },
         ...challenges,
+        { week: active_week, description: e.target.value },
       ]);
       setCurrentChallenge('');
     }
@@ -66,20 +66,20 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
 
   const createDeliverable = (e) => {
     if (e.keyCode === 13) {
-      setDeliverables([{ description: e.target.value }, ...deliverables]);
+      setDeliverables([...deliverables, { description: e.target.value }]);
       setCurrentDeliverable('');
     }
   };
 
-  const getAchievements = () => {
+  const getAchievements = (week = active_week) => {
     return achievements
-      .filter((achievement) => achievement.week === active_week)
+      .filter((achievement) => achievement.week === week)
       .map((achievement, idx) => <li key={idx}>{achievement.description}</li>);
   };
 
-  const getChallenges = () => {
+  const getChallenges = (week = active_week) => {
     return challenges
-      .filter((challenge) => challenge.week === active_week)
+      .filter((challenge) => challenge.week === week)
       .map((challenge, idx) => <li key={idx}>{challenge.description}</li>);
   };
 
@@ -89,8 +89,21 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
     ));
   };
 
+  const ref = useRef();
+
   return (
     <div>
+      <button
+        className={styles['export-btn']}
+        onClick={async () => {
+          const { exportComponentAsPNG } = await import(
+            'react-component-export-image'
+          );
+          exportComponentAsPNG(ref);
+        }}
+      >
+        Download as PNG
+      </button>
       <Modal
         title={title}
         onClose={() => setIsModalVisible(false)}
@@ -135,7 +148,8 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
           </>
         )}
       </Modal>
-      <div className={styles.roadmap}>
+
+      <div className={styles.roadmap} ref={ref}>
         {weeks?.map((week, index) => (
           <div
             key={index}
@@ -148,14 +162,25 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
                 openModal(title, index + 1);
               }}
             />
+            <div>
+              <div className={styles['achievement-label']}>Achievements</div>
+              <ul>{getAchievements(index + 1)}</ul>
+            </div>
+            <div>
+              <div className={styles['challenge-label']}>Challenges</div>
+              <ul>{getChallenges(index + 1)}</ul>
+            </div>
           </div>
         ))}
-        <div className={`${styles.week} ${styles.deliverable}`}>
-          <Indicator
-            title="Coming soon"
-            onClick={() => openModal('Coming soon')}
-          />
-        </div>
+        {weeks.length > 0 && (
+          <div className={`${styles.week} ${styles.deliverable}`}>
+            <Indicator
+              title="Coming soon"
+              onClick={() => openModal('Coming soon')}
+            />
+            <ul>{getDeliverables()}</ul>
+          </div>
+        )}
       </div>
     </div>
   );
