@@ -5,6 +5,7 @@ import Modal from './modal';
 import Indicator from './indicator';
 
 type RoadmapType = {
+  indicator: string;
   weeks: Array<WeekType>;
 };
 
@@ -27,7 +28,7 @@ type DeliverableType = {
   description: string;
 };
 
-const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
+const Roadmap: React.FC<RoadmapType> = ({ indicator,weeks }) => {
   const [achievements, setAchievements] = useState<Array<AchievementType>>([]);
   const [challenges, setChallenges] = useState<Array<ChallengeType>>([]);
   const [deliverables, setDeliverables] = useState<Array<DeliverableType>>([]);
@@ -161,6 +162,7 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
                 const title = `Week ${index + 1} (${week.start} - ${week.end})`;
                 openModal(title, index + 1);
               }}
+              indicator={indicator}
             />
             <div>
               <div className={styles['achievement-label']}>Achievements</div>
@@ -177,6 +179,7 @@ const Roadmap: React.FC<RoadmapType> = ({ weeks }) => {
             <Indicator
               title="Coming soon"
               onClick={() => openModal('Coming soon')}
+              indicator={indicator}
             />
             <ul>{getDeliverables()}</ul>
           </div>
