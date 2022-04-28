@@ -102,7 +102,7 @@ const imageChange =(indicator) => {
   setIndicator(indicator);
 };
   return (
-    <div className="MonthYearPicker">
+    <><div className="MonthYearPicker">
       <h1>RoadMap Template Generator</h1>
       <h3>Please select the month</h3>
       <button className={styles.monthbtn} onClick={showMonthPicker}>{getMonthValue()}</button>
@@ -127,8 +127,10 @@ const imageChange =(indicator) => {
         </div>
       </div>
 
-      <Roadmap weeks={weeks} indicator={indicator} />
+      
     </div>
+    <Roadmap weeks={weeks} indicator={indicator} />
+    </>
   );
 };
 export default MonthPicker;
