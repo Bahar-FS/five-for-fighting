@@ -8,7 +8,7 @@ import Image from 'next/image';
 import indicator1 from '../../public/google-maps.png';
 import indicator2 from '../../public/indicator.png';
 import indicator3 from '../../public/maps-and-flags.png';
-import { doc } from 'prettier';
+
 
 const MonthPicker = () => {
   const currentDate = new Date();
@@ -102,9 +102,10 @@ const imageChange =(indicator) => {
   setIndicator(indicator);
 };
   return (
-    <div className="MonthYearPicker">
-      <div>Please select the month:</div>
-      <button onClick={showMonthPicker}>{getMonthValue()}</button>
+    <><div className="MonthYearPicker">
+      <h1>RoadMap Template Generator</h1>
+      <h3>Please select the month</h3>
+      <button className={styles.monthbtn} onClick={showMonthPicker}>{getMonthValue()}</button>
       <Picker
         show={isVisible}
         lang={monthsList}
@@ -126,8 +127,10 @@ const imageChange =(indicator) => {
         </div>
       </div>
 
-      <Roadmap weeks={weeks} indicator={indicator} />
+      
     </div>
+    <Roadmap weeks={weeks} indicator={indicator} />
+    </>
   );
 };
 export default MonthPicker;
