@@ -188,16 +188,19 @@
   &.indicator-map {
     background: url('../../public/google-maps.png') no-repeat;
     background-size: 100%;
+  
   }
 
   &.indicator-red {
     background: url('../images/indicator.png') no-repeat;
     background-size: 100%;
+    
   }
 
   &.indicator-black {
     background: url('../../public/maps-and-flags.png') no-repeat;
     background-size: 100%;
+   
   }
 }
 
@@ -270,7 +273,7 @@
   width: 230px;
   height: 200px;
   padding: 10px;
-  margin-top: 10px;
+  margin: 10px 10px 10px 10px;
   .image_indicator:hover{
     opacity: 0.3;
 
@@ -281,8 +284,27 @@
   background-size: contain;
   width: 100vw;
   height: 80vh;
-}
+  background-color:palegreen;
+ 
 
+}
+.monthbtn{
+  margin:5px;
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+.heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .export-btn {
   background-color: red;
   border: none;

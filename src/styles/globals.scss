@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+   background-color: palegreen;
 }
 
 a {
@@ -18,4 +19,13 @@ textarea {
 
 * {
   box-sizing: border-box;
+}
+h1{
+  display: flex;
+  justify-content: center;
+}
+h4{
+
+  font-weight: 700;
+  margin-left: 20px;
 }
